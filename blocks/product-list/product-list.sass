@@ -1,3 +1,31 @@
+.product-list__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 32px
+  em
+    font-style: normal
+    color: #0865A7
+
+.product-list__subtitle
+  font-size: 13px
+  font-weight: 500
+  line-height: 26px
+  color: #1B1B1B
+  margin-top: 10px
+
+.product-list-items
+  margin-top: 20px
+
+.product-list-item
+  background-color: #fff
+  padding: 10px 10px 0 10px
+  margin-bottom: 20px
+  &:last-child
+    margin-bottom: 0
+
+.product-list-item-top
+  position: relative
+
 .product-list-item-image-wrap
   display: flex
   justify-content: center
@@ -10,3 +38,82 @@
   height: auto
   max-width: 100%
   max-height: 100%
+
+.product-list-item-characteristics
+  position: absolute
+  display: flex
+  gap: 4px 6px
+  flex-wrap: wrap
+  bottom: 0
+
+.product-list-item__characteristic
+  font-size: 9px
+  font-weight: 600
+  line-height: 9px
+  color: #fff
+  background-color: #397FB0
+  padding: 7px 8px
+
+.product-list-item-description
+  display: flex
+  flex-direction: column
+
+.product-list-item__title
+  font-size: 12px
+  font-weight: 600
+  line-height: 20px
+  margin-top: 13px
+  margin-bottom: 30px
+
+.product-list-item__subtitle
+  font-size: 12px
+  font-weight: 600
+  line-height: 20px
+  color: transparentize(#333, .3)
+  margin-top: auto
+
+.product-list-item__link
+  display: flex
+  align-items: center
+  justify-content: center
+  text-decoration: none
+  font-size: 12px
+  font-weight: 600
+  line-height: 20px
+  text-transform: uppercase
+  color: #0865A7
+  background-color: #E5ECF1
+  padding: 18px
+  margin: 20px -10px 0 -10px
+  svg
+    margin-left: 9px
+
+@media screen and (min-width: 768px)
+  .product-list-items
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 16px
+
+  .product-list-item
+    position: relative
+    display: flex
+    flex-direction: column
+    min-height: 460px
+    margin-bottom: 0
+
+  .product-list-item-image-wrap
+    height: 218px
+
+  .product-list-item-description
+    display: flex
+    flex-direction: column
+    height: 100%
+
+  .product-list-item__title
+    margin-bottom: 30px
+
+  .product-list-item__subtitle
+    margin-top: auto
+
+  .product-list-item__link
+    margin-top: 31px
