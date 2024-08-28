@@ -23,7 +23,7 @@
 .info-block-text-wrap
   max-width: 410px
   color: #fff
-  padding: 30px 24px
+  padding: 30px 24px 30px 30px
   margin-left: auto
   margin-right: auto
   p
@@ -55,12 +55,16 @@
     display: block
 
   .info-block-text
+    padding: 20px 44px 42px 20px
     margin: 0
 
   .info-block-text-wrap
     max-width: none
+    padding: 0
     margin-right: 0
     margin-left: 0
+    p
+      margin: 15px 0
 
 @media screen and (min-width: 1280px)
   .info-block
@@ -71,12 +75,16 @@
 
   .info-block-image-wrap
     height: 443px
+    margin-bottom: 0
 
   .info-block-image-wrap_tablet-show
     display: none
 
+  .info-block-text
+    padding: 30px 35px 30px 28px
+
   .info-block-text-wrap
-    padding: 30px 30px 30px 28px
+    h3 > p
+      margin-top: 18px
     p
-      &:first-child
-        margin-top: 18px
+      margin: 20px 0

@@ -6,6 +6,7 @@
   font-size: 23px
   font-weight: 700
   line-height: 32px
+  text-transform: uppercase
   margin-bottom: 17px
 
   .tablet-show
@@ -31,7 +32,9 @@
   font-size: 13px
   font-weight: 600
   line-height: 26px
-  margin-bottom: 15px
+  margin-bottom: 17px
+  .desktop-show
+    display: none
 
 .contacts-info-connection
   display: flex
@@ -75,6 +78,9 @@
   max-height: 100%
 
 @media screen and (min-width: 768px)
+  .contacts
+    margin-top: 50px
+
   .contacts__title
     font-size: 36px
     line-height: 48px
@@ -111,6 +117,34 @@
     height: 100%
 
 @media screen and (min-width: 1280px)
+  .contacts
+    margin-top: 60px
+
   .contacts__title
+    margin-bottom: 30px !important
     .tablet-show
       display: none
+
+  .contacts-info
+    max-width: 445px
+    padding: 40px
+
+  .contacts-info__text
+    font-size: 13px
+
+  .contacts-info__address
+    font-size: 16px
+    line-height: 28px
+    .desktop-show
+      display: inline
+
+  .contacts-info-connection
+    flex-direction: column
+    gap: 24px
+
+  .contacts-info__connect
+    font-size: 20px
+    line-height: 20px
+
+  .contacts-info__link
+    margin-top: 35px

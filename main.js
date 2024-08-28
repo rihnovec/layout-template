@@ -1,12 +1,9 @@
 import './blocks/bundles/showroom.sass'
 
+import productList from './blocks/product-list/product-list'
+import cardList from './blocks/card-list/card-list'
+
 document.addEventListener('DOMContentLoaded', () => {
-
-    const cards = document.querySelectorAll('.card-list-item');
-    cards.forEach(function(cards) {
-        cards.addEventListener('click', function() {
-            cards.classList.toggle('flip')
-        });
-    });
-
+    cardList()
+    productList()
 })
