@@ -1,0 +1,135 @@
+.showroom-gallery-columns
+  margin-top: 30px
+
+.showroom-gallery-wrap
+  .showroom-gallery
+    margin-right: -25px
+
+.showroom-gallery
+  .showroom-gallery-slide
+    width: 210px
+    aspect-ratio: 1 / 1
+    position: relative
+    margin-right: 12px
+
+    &:last-child
+      margin-right: 0
+
+.showroom-gallery-slide__img
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  object-fit: cover
+
+.showroom-gallery-pagination
+  display: none
+
+.showroom-gallery-scrollbar
+  margin-top: 10px
+  height: 3px
+  background-color: #D9D9D9
+
+.showroom-gallery-scrollbar__drag
+  background-color: #0977C4
+  height: 100%
+
+.showroom-gallery-thumb
+  display: none
+
+@media screen and (min-width: 768px)
+  .showroom-gallery-columns
+    padding-top: 30px
+    border-top: 1px solid #EEEEEE
+
+  .showroom-gallery-wrap
+    .showroom-gallery
+      margin-right: -32px
+
+  .showroom-gallery
+    .showroom-gallery-slide
+      width: 317px
+
+@media screen and (min-width: 1280px)
+  .showroom-gallery-wrap
+    min-width: 0
+    flex-grow: 1
+
+    .showroom-gallery
+      margin-right: 0
+
+  .showroom-gallery-scrollbar
+    display: none
+
+  .showroom-gallery
+    .showroom-gallery-slide
+      margin-right: 0
+
+  .showroom-gallery-columns
+    padding-top: 60px
+    margin-top: 60px
+    position: relative
+    display: flex
+    gap: 22px
+    width: 100%
+
+    .showroom-gallery-pagination
+      display: block
+      position: absolute
+      left: 40px
+      bottom: 42px
+      z-index: 2
+      font-size: 40px
+      line-height: 100%
+      font-weight: 500
+      color: #fff
+
+  .showroom-gallery-thumbs
+    display: flex
+    flex-direction: column
+    gap: 22px
+    width: 35%
+    flex-shrink: 0
+
+  .showroom-gallery-thumb
+    display: block
+    position: relative
+
+  .showroom-gallery-thumb-slider
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+
+  .showroom-gallery-thumb-slide
+    position: relative
+
+  .showroom-gallery-thumb-slide__img
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  .showroom-gallery-thumb_1
+    flex-grow: 1
+    min-height: 0
+
+  .showroom-gallery-thumb_2
+    height: 41%
+    flex-shrink: 0
+    position: relative
+
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background-color: #0977C4
+      opacity: .9
+      z-index: 2

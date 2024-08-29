@@ -2,20 +2,20 @@
 @import '../card-list/card-list'
 @import '../product-list/product-list'
 @import '../contacts-map/contacts-map'
+@import '../showroom-gallery/showroom-gallery'
 
-h3
-  font-size: 24px
-  font-weight: 700
-  line-height: 32px
+.custom-swiper-container
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  overflow: hidden
+  list-style: none
+  padding: 0
+  z-index: 1
 
-p
-  font-size: 13px
-  font-weight: 500
-  line-height: 28px
-
-.showroom-container
+.showroom-gallery-container
   color: #333333
-  padding: 30px 0 40px
+  padding: 30px 24px 40px
 
 .info-block-container
   padding: 0
@@ -62,14 +62,12 @@ p
       margin: 0
 
 @media screen and (min-width: 1280px)
-  p
-    font-size: 15px
-    font-weight: 600
-    line-height: 26px
-
   .info-block-container, .card-list, .slider,
-  .contacts-container, .product-list
+  .showroom-container, .contacts-container, .product-list
     max-width: 1064px
     padding: 0
     margin-right: auto
     margin-left: auto
+
+  .showroom-gallery-container
+    padding: 0
