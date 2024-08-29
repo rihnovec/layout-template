@@ -5,7 +5,7 @@ export default () => {
     const sliderEl = galleryWrapEl.querySelector('.showroom-gallery')
     const scrollbarEl = galleryWrapEl.querySelector('.showroom-gallery-scrollbar')
 
-    new Swiper(sliderEl, {
+    const sliderInstance = new Swiper(sliderEl, {
       slidesPerView: 'auto',
       freeMode: true,
       watchOverflow: true,
@@ -23,5 +23,29 @@ export default () => {
         formatFractionTotal: number => number >= 10 ? number.toString() : '0' + number,
       }
     })
+
+    initFancyboxGallery(sliderInstance)
   }
+}
+
+function initFancyboxGallery(sliderInstance) {
+  const sliderEl = sliderInstance.el
+  const gallery = [...sliderEl.querySelectorAll('.showroom-gallery-slide__img')]
+    .map(img => ({src: img.getAttribute('src')}))
+
+  sliderEl.addEventListener('click', ({target}) => {
+    const slide = target.closest('.showroom-gallery-slide')
+
+    if (slide) {
+      const slideIndex = slide.dataset.index
+
+      $.fancybox.open(gallery, {
+        mobile: {
+          clickSlide() {
+            return "close"
+          },
+        },
+      }, slideIndex)
+    }
+  })
 }

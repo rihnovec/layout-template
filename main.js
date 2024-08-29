@@ -1,5 +1,8 @@
 import './blocks/bundles/showroom.sass'
 
+import '@fancyapps/fancybox'
+import '@fancyapps/fancybox/dist/jquery.fancybox.min.css'
+
 import Swiper from 'swiper';
 import {Pagination, Scrollbar} from 'swiper'
 
