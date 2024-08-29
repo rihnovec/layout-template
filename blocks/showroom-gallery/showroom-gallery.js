@@ -2,9 +2,11 @@ export default () => {
   const galleryWrapEl = document.querySelector('.showroom-gallery-wrap')
 
   if (galleryWrapEl) {
+    const sectionEl = galleryWrapEl.closest('.showroom-gallery-columns')
     const sliderEl = galleryWrapEl.querySelector('.showroom-gallery')
     const scrollbarEl = galleryWrapEl.querySelector('.showroom-gallery-scrollbar')
     const paginationEl = document.querySelector('.showroom-gallery-pagination')
+    let canScroll = true, scrollTimeout
 
     const sliderInstance = new Swiper(sliderEl, {
       slidesPerView: 'auto',
@@ -30,13 +32,70 @@ export default () => {
         }
       },
       on: {
-        // init: function(swiper) {
-        //
-        // }
+        init: function(swiper) {
+          swiper.customThumbs = [
+            document.querySelector('.showroom-gallery-thumb_1 .showroom-gallery-thumb__img'),
+            document.querySelector('.showroom-gallery-thumb_2 .showroom-gallery-thumb__img')
+          ]
+
+          swiper.imagesSrc = swiper.slides.map(
+            slide => slide.querySelector('.showroom-gallery-slide__img').getAttribute('src')
+          )
+        },
+
+        slideChange: function(swiper) {
+          const currentIndex = swiper.realIndex
+          const thumbSrcIndexes = []
+
+          if (currentIndex < swiper.slides.length - 1) {
+            thumbSrcIndexes[0] = currentIndex + 1
+          } else {
+            thumbSrcIndexes[0] = Math.abs(currentIndex + 1 - swiper.slides.length)
+          }
+
+          if (currentIndex < swiper.slides.length - 2) {
+            thumbSrcIndexes[1] = currentIndex + 2
+          } else {
+            thumbSrcIndexes[1] = Math.abs(currentIndex + 2 - swiper.slides.length)
+          }
+
+          swiper.customThumbs.forEach((thumb, index) => {
+            thumb.setAttribute('src', swiper.imagesSrc[thumbSrcIndexes[index]])
+          })
+        }
       }
     })
 
     initFancyboxGallery(sliderInstance)
+
+    if (sectionEl) {
+      if (window.innerWidth >= 1280) {
+        sectionEl.addEventListener('mousewheel', (event) => {
+          if (!canScroll) {
+            event.preventDefault()
+            return false
+          }
+
+          const sliderEvent = event.deltaY > 0 ? 'slideNext' : 'slidePrev'
+
+          if (sliderEvent === 'slidePrev' && !sliderInstance.isBeginning) {
+            event.preventDefault()
+          }
+
+          if (sliderEvent === 'slideNext' && !sliderInstance.isEnd) {
+            event.preventDefault()
+          }
+
+          sliderInstance[sliderEvent]()
+
+          canScroll = false
+          clearTimeout(scrollTimeout)
+          scrollTimeout = setTimeout(() => {
+            canScroll = true
+          }, 300)
+        })
+      }
+    }
   }
 }
 
