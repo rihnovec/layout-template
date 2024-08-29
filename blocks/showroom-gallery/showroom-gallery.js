@@ -4,6 +4,7 @@ export default () => {
   if (galleryWrapEl) {
     const sliderEl = galleryWrapEl.querySelector('.showroom-gallery')
     const scrollbarEl = galleryWrapEl.querySelector('.showroom-gallery-scrollbar')
+    const paginationEl = document.querySelector('.showroom-gallery-pagination')
 
     const sliderInstance = new Swiper(sliderEl, {
       slidesPerView: 'auto',
@@ -15,12 +16,23 @@ export default () => {
         draggable: true
       },
       pagination: {
-        el: '.showroom-gallery-pagination',
+        el: paginationEl,
         type: 'fraction',
         currentClass: 'showroom-gallery-pagination__current',
         totalClass: 'showroom-gallery-pagination__total',
         formatFractionCurrent: number => number >= 10 ? number.toString() : '0' + number,
         formatFractionTotal: number => number >= 10 ? number.toString() : '0' + number,
+      },
+      breakpoints: {
+        1280: {
+          slidesPerView: 1,
+          freeMode: false
+        }
+      },
+      on: {
+        // init: function(swiper) {
+        //
+        // }
       }
     })
 
