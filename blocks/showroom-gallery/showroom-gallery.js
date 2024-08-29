@@ -12,6 +12,8 @@ export default () => {
       slidesPerView: 'auto',
       freeMode: true,
       watchOverflow: true,
+      allowTouchMove: !isDesktop(),
+      effect: isDesktop() ? 'fade' : 'slide',
       scrollbar: {
         el: scrollbarEl,
         dragClass: 'showroom-gallery-scrollbar__drag',
@@ -33,35 +35,35 @@ export default () => {
       },
       on: {
         init: function(swiper) {
-          swiper.customThumbs = [
-            document.querySelector('.showroom-gallery-thumb_1 .showroom-gallery-thumb__img'),
-            document.querySelector('.showroom-gallery-thumb_2 .showroom-gallery-thumb__img')
-          ]
-
-          swiper.imagesSrc = swiper.slides.map(
-            slide => slide.querySelector('.showroom-gallery-slide__img').getAttribute('src')
-          )
+          if (isDesktop()) {
+            swiper.customThumbs = [
+              getThumbSlider('.showroom-gallery-thumb_1 .showroom-gallery-thumb-slider'),
+              getThumbSlider('.showroom-gallery-thumb_2 .showroom-gallery-thumb-slider')
+            ]
+          }
         },
 
         slideChange: function(swiper) {
-          const currentIndex = swiper.realIndex
-          const thumbSrcIndexes = []
+          if (isDesktop()) {
+            const currentIndex = swiper.realIndex
+            const thumbSrcIndexes = []
 
-          if (currentIndex < swiper.slides.length - 1) {
-            thumbSrcIndexes[0] = currentIndex + 1
-          } else {
-            thumbSrcIndexes[0] = Math.abs(currentIndex + 1 - swiper.slides.length)
+            if (currentIndex < swiper.slides.length - 1) {
+              thumbSrcIndexes[0] = currentIndex + 1
+            } else {
+              thumbSrcIndexes[0] = Math.abs(currentIndex + 1 - swiper.slides.length)
+            }
+
+            if (currentIndex < swiper.slides.length - 2) {
+              thumbSrcIndexes[1] = currentIndex + 2
+            } else {
+              thumbSrcIndexes[1] = Math.abs(currentIndex + 2 - swiper.slides.length)
+            }
+
+            swiper.customThumbs.forEach((thumb, index) => {
+              thumb.slideTo(thumbSrcIndexes[index])
+            })
           }
-
-          if (currentIndex < swiper.slides.length - 2) {
-            thumbSrcIndexes[1] = currentIndex + 2
-          } else {
-            thumbSrcIndexes[1] = Math.abs(currentIndex + 2 - swiper.slides.length)
-          }
-
-          swiper.customThumbs.forEach((thumb, index) => {
-            thumb.setAttribute('src', swiper.imagesSrc[thumbSrcIndexes[index]])
-          })
         }
       }
     })
@@ -69,7 +71,7 @@ export default () => {
     initFancyboxGallery(sliderInstance)
 
     if (sectionEl) {
-      if (window.innerWidth >= 1280) {
+      if (isDesktop()) {
         sectionEl.addEventListener('mousewheel', (event) => {
           if (!canScroll) {
             event.preventDefault()
@@ -99,6 +101,13 @@ export default () => {
   }
 }
 
+function getThumbSlider(thumbSelector) {
+  return new Swiper(thumbSelector, {
+    effect: 'fade',
+    allowTouchMove: false
+  })
+}
+
 function initFancyboxGallery(sliderInstance) {
   const sliderEl = sliderInstance.el
   const gallery = [...sliderEl.querySelectorAll('.showroom-gallery-slide__img')]
@@ -119,4 +128,8 @@ function initFancyboxGallery(sliderInstance) {
       }, slideIndex)
     }
   })
+}
+
+function isDesktop() {
+  return window.innerWidth >= 1280
 }

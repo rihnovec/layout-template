@@ -4,9 +4,9 @@ import '@fancyapps/fancybox'
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css'
 
 import Swiper from 'swiper';
-import {Pagination, Scrollbar} from 'swiper'
+import {Pagination, Scrollbar, EffectFade} from 'swiper'
 
-Swiper.use([Pagination, Scrollbar])
+Swiper.use([Pagination, Scrollbar, EffectFade])
 window.Swiper = Swiper
 
 import 'swiper/swiper-bundle.css';
