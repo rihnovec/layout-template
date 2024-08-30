@@ -143,8 +143,19 @@
     gap: 24px
 
   .contacts-info__connect
+    display: inline-block
     font-size: 20px
     line-height: 20px
+    border-bottom: 1px solid transparent
+    transition: 0.3s
+    &:hover
+      border-bottom: 1px solid #fff
 
   .contacts-info__link
+    border: 1px solid transparent
+    transition: 0.3s
     margin-top: 35px
+    &:hover
+      background-color: transparent
+      border-color: #fff
+      color: #fff
