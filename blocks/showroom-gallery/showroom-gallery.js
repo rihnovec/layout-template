@@ -1,3 +1,5 @@
+import {isDesktop} from '../helpers/isDesktop.js'
+
 export default () => {
   const galleryWrapEl = document.querySelector('.showroom-gallery-wrap')
 
@@ -37,8 +39,14 @@ export default () => {
         init: function(swiper) {
           if (isDesktop()) {
             swiper.customThumbs = [
-              getThumbSlider('.showroom-gallery-thumb_1 .showroom-gallery-thumb-slider'),
-              getThumbSlider('.showroom-gallery-thumb_2 .showroom-gallery-thumb-slider')
+              getThumbSlider({
+                sliderSelector: '.showroom-gallery-thumb_1 .showroom-gallery-thumb-slider',
+                initialSlide: 1
+              }),
+              getThumbSlider({
+                sliderSelector: '.showroom-gallery-thumb_2 .showroom-gallery-thumb-slider',
+                initialSlide: 2
+              })
             ]
           }
         },
@@ -101,10 +109,11 @@ export default () => {
   }
 }
 
-function getThumbSlider(thumbSelector) {
-  return new Swiper(thumbSelector, {
+function getThumbSlider({sliderSelector, initialSlide}) {
+  return new Swiper(sliderSelector, {
     effect: 'fade',
-    allowTouchMove: false
+    allowTouchMove: false,
+    initialSlide: initialSlide
   })
 }
 
@@ -128,8 +137,4 @@ function initFancyboxGallery(sliderInstance) {
       }, slideIndex)
     }
   })
-}
-
-function isDesktop() {
-  return window.innerWidth >= 1280
 }

@@ -16,7 +16,8 @@
   gap: 20px
 
 .card-list-item
-  position: relative
+  display: grid
+  grid-template-rows: 1fr
   width: 100%
   height: auto
   min-height: 479px
@@ -24,16 +25,16 @@
   transition: transform 0.9s
   cursor: pointer
   color: #fff
-  background-color: #0977C4
   box-shadow: 2px 2px 10px 0 #0E3F6233
 
-.card-list-item.flip
-  transform: rotateY(180deg)
+.card-list-item
+  &:hover
+    transform: rotateY(180deg)
 
 .card-list-item-content
   display: flex
   flex-direction: column
-  position: absolute
+  grid-area: 1 / 1 / 2 / 2
   width: 100%
   height: 100%
   backface-visibility: hidden
@@ -65,6 +66,7 @@
 
 .card-list-item__button
   display: flex
+  flex-shrink: 0
   align-items: center
   justify-content: center
   border: none
@@ -77,9 +79,13 @@
     width: 14px
 
 .card-list-item-content_front
+  z-index: 10
+  transform: rotateY(0deg)
   background: radial-gradient(50% 50% at 0% 100%, rgba(27, 227, 240, 0.6) 0%, rgb(9, 119, 196) 100%)
+  background-color: #0977C4
 
 .card-list-item-content_back
+  z-index: 9
   background-color: #fff
   color: #1B1B1B
   border: 1px solid #3333331A
