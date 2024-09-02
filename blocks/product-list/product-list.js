@@ -20,9 +20,10 @@ export default() => {
                     navItem.addEventListener('mouseenter', () => {
                         swiper.slideTo(index)
                     })
-                    swiper.el.addEventListener('mouseleave', () => {
-                        swiper.autoplay.start()
-                    })
+                })
+
+                swiper.el.addEventListener('mouseleave', () => {
+                    swiper.autoplay.start()
                 })
             }
         }
