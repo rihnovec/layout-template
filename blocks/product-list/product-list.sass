@@ -25,9 +25,6 @@
 .product-list-item-top
   position: relative
 
-.product-list-item-slider
-  height: 207px
-
 .product-list-item-slide
   width: 100% !important
 
@@ -45,9 +42,10 @@
   max-height: 100%
 
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets
+  position: static
+  margin-top: 10px
   display: flex
   width: 100%
-  bottom: 0
 
   .swiper-pagination-bullet
     width: 100%
@@ -69,7 +67,7 @@
   display: flex
   gap: 4px 6px
   flex-wrap: wrap
-  bottom: 11px
+  bottom: 13px
 
 .product-list-item__characteristic
   font-size: 9px
@@ -135,14 +133,14 @@
     min-height: 460px
     margin-bottom: 0
 
-  .product-list-item-slider
-    height: 226px
-
   .product-list-item-image
     height: 218px
 
+  .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets
+    margin-top: 8px
+
   .product-list-item-characteristics
-    bottom: 8px
+    bottom: 11px
 
   .product-list-item__characteristic
     font-size: 10px
@@ -177,9 +175,6 @@
     min-height: 590px
     padding: 14px 15px 0 15px
 
-  .product-list-item-slider
-    height: 345px
-
   .product-list-item-image
     height: 332px
 
@@ -209,7 +204,21 @@
   .product-list-item__link svg path
     transition: 0.3s
 
+  .product-list-item-slider-nav
+    display: flex
+    height: 100%
+    width: 100%
+    position: absolute
+    left: 0
+    top: 0
+    z-index: 1
+
+  .product-list-item-slider-nav-item
+    flex: 1
+    cursor: pointer
+
 .product-list-item-slider-pagination
   .swiper-pagination-bullet:before
     content: none
     display: none
+

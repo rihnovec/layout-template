@@ -1,11 +1,14 @@
-.info-block-image-wrap
-  display: flex
-  justify-content: center
-  width: auto
-  height: 328px
+.info-block-image
+  text-align: center
+  width: 100%
   margin-bottom: 30px
   &:last-child
     margin-bottom: 0
+
+.info-block-image__picture
+  display: block
+  width: 100%
+  line-height: 0
 
 .info-block-image__img
   object-fit: cover
@@ -13,9 +16,6 @@
   height: auto
   max-width: 100%
   max-height: 100%
-
-.info-block-image-wrap_tablet-show
-  display: none
 
 .info-block-text
   background-color: #0977C4
@@ -50,16 +50,11 @@
 
   .info-block-image
     max-width: 292px
-
-  .info-block-image-wrap
-    height: 308px
-    margin-bottom: 10px
+    height: 100%
+    margin-bottom: 0
 
   .info-block-image__img
     height: 100%
-
-  .info-block-image-wrap_tablet-show
-    display: block
 
   .info-block-text
     padding: 20px 44px 42px 20px
@@ -79,13 +74,6 @@
 
   .info-block-image
     max-width: 419px
-
-  .info-block-image-wrap
-    height: 443px
-    margin-bottom: 0
-
-  .info-block-image-wrap_tablet-show
-    display: none
 
   .info-block-text
     padding: 30px 35px 30px 28px
