@@ -12,21 +12,13 @@
 
 .info-block-container
   padding: 0
-  margin: 0
+  margin: 0 -16px
   max-width: none
 
 .product-list-container
   padding: 40px 0
+  margin: 0 -16px
   background-color: #F8F8F8
-
-.contacts-container
-  padding: 0
-  margin: 0
-  max-width: none
-
-  .contacts__title
-    padding: 0 24px
-    margin: 0 auto 17px auto
 
 @media screen and (min-width: 768px)
   .showroom-container
@@ -41,18 +33,10 @@
 
   .product-list-container
     padding: 60px 0
+    margin: 0 -30px
 
-  .contacts-container
-    max-width: 768px
-    padding-left: 32px
-    padding-right: 32px
-    margin-right: auto
-    margin-left: auto
-
-    .contacts__title
-      text-align: left
-      padding: 0
-      margin: 0
+    .container
+      width: auto
 
 @media screen and (min-width: 1280px)
   .info-block-container, .card-list, .slider,
@@ -64,3 +48,7 @@
 
   .showroom-gallery-container
     padding: 0
+
+  .product-list-container
+    background-color: transparent
+    margin: 0
