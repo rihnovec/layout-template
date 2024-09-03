@@ -13,8 +13,13 @@ import 'swiper/swiper-bundle.css';
 
 import showroomGallery from './blocks/showroom-gallery/showroom-gallery'
 import productList from './blocks/product-list/product-list'
+import cardList from './blocks/card-list/card-list.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     showroomGallery()
     productList()
+
+    if (window.innerWidth < 1280) {
+        cardList()
+    }
 })
