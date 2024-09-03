@@ -16,29 +16,21 @@
   gap: 20px
 
 .card-list-item
+  &:hover
+    .card-list-item-content
+      transform: rotateY(180deg)
+
+.card-list-item-content
   display: grid
   grid-template-rows: 1fr
   width: 100%
-  height: auto
+  height: 100%
   min-height: 479px
+  color: #fff
+  cursor: pointer
   transform-style: preserve-3d
   transition: transform 0.9s
-  cursor: pointer
-  color: #fff
   box-shadow: 2px 2px 10px 0 #0E3F6233
-
-.card-list-item
-  &:hover
-    transform: rotateY(180deg)
-
-.card-list-item-content
-  display: flex
-  flex-direction: column
-  grid-area: 1 / 1 / 2 / 2
-  width: 100%
-  height: 100%
-  backface-visibility: hidden
-  padding: 25px 15px 20px 20px
 
 .card-list-item-description
   margin-bottom: 40px
@@ -78,11 +70,21 @@
   svg
     width: 14px
 
+.card-list-item-content_front,
+.card-list-item-content_back
+  display: flex
+  flex-direction: column
+  grid-area: 1 / 1 / 2 / 2
+  width: 100%
+  height: 100%
+  backface-visibility: hidden
+  background-color: #0977C4
+  padding: 25px 15px 20px 20px
+
 .card-list-item-content_front
   z-index: 10
   transform: rotateY(0deg)
   background: radial-gradient(50% 50% at 0% 100%, rgba(27, 227, 240, 0.6) 0%, rgb(9, 119, 196) 100%)
-  background-color: #0977C4
 
 .card-list-item-content_back
   z-index: 9
@@ -113,11 +115,12 @@
     grid-template-columns: repeat(2, minmax(0, 1fr))
     gap: 16px
 
-  .card-list-item
+  .card-list-item-content
     min-height: 489px
     box-shadow: 2px 2px 10px 0 #0E3F620A
 
-  .card-list-item-content
+  .card-list-item-content_front,
+  .card-list-item-content_back
     padding-bottom: 30px
 
   .card-list-item__title
@@ -137,7 +140,8 @@
     &:nth-child(-n+2)
       grid-column: span 3
 
-      .card-list-item-content
+      .card-list-item-content_front,
+      .card-list-item-content_back
         padding-right: 40px
 
       .card-list-item__title
@@ -151,7 +155,8 @@
       .card-list-item__title
         font-size: 16px
 
-  .card-list-item-content
+  .card-list-item-content_front,
+  .card-list-item-content_back
     padding: 30px 30px 36px 30px
 
   .card-list-item__title
